@@ -19,6 +19,7 @@
 // SOFTWARE.
 
 use super::error::*;
+use super::index_parser_delegate::parse_create_index;
 use zawgl_cypher_query_model::ast::{AstTagNode, AstTag, Ast};
 use zawgl_cypher_query_model::token::TokenType;
 use super::*;
@@ -52,10 +53,14 @@ pub fn parse(parser: &mut Parser) -> ParserResult<Box<dyn Ast>> {
         match tok.token_type {
             TokenType::Create =>  {
                 parser.advance();
-                parse_create(parser, &mut query_node)?;
-                parse_return(parser, &mut query_node)?;
+                if parser.check(TokenType::Index) {
+                    parser.advance();
+                    parse_create_index(parser, &mut query_node)?;
+                } else {
+                    parse_create(parser, &mut query_node)?;
+                    parse_return(parser, &mut query_node)?;
+                }
                 Ok(query_node)
-                
             },
             TokenType::Match => {
                 while parser.check(TokenType::Match) {

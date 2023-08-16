@@ -24,6 +24,7 @@ mod pattern_parser_delegate;
 mod properties_parser_delegate;
 mod common_parser_delegate;
 mod return_clause_parser_delegate;
+mod index_parser_delegate;
 pub mod where_clause_parser_delegate;
 pub mod cypher_parser;
 

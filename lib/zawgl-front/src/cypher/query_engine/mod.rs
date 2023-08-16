@@ -458,6 +458,14 @@ impl AstVisitor for CypherAstVisitor {
         }
         Ok(())
     }
+
+    fn enter_index(&mut self) -> AstVisitorResult {
+        todo!()
+    }
+
+    fn exit_index(&mut self) -> AstVisitorResult {
+        todo!()
+    }
 }
 
 #[cfg(test)]

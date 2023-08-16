@@ -1,5 +1,6 @@
 // MIT License
-// Copyright (c) 2022 Alexandre RICCIARDI
+//
+// Copyright (c) 2023 Alexandre RICCIARDI
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -18,12 +19,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-mod byte_utils;
-mod pager;
-mod records;
-mod index;
-mod store;
-mod io;
-mod properties_repository;
-pub mod graph_repository;
-pub mod key_properties_repository;
+use super::*;
+use super::error::*;
+
+use zawgl_cypher_query_model::ast::{AstTagNode, AstTag, Ast};
+use zawgl_cypher_query_model::token::{TokenType};
+use super::common_parser_delegate::*;
+
+pub fn parse_create_index(parser: &mut Parser, parent_node: &mut Box<AstTagNode>) -> ParserResult<()> {
+    let mut index_node = make_ast_tag(AstTag::Index);
+    if parser.current_token_type_advance(TokenType::Identifier) {
+        let index_name = make_ast_token(parser);
+
+    }
+    parent_node.append(index_node);
+    Ok(())
+}

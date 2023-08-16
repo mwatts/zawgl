@@ -25,3 +25,5 @@ pub const DYN_FILE_NAME: &str = "dyn.db";
 pub const NODES_LABELS_INDEX_FILE_NAME: &str = "nodes-index.db";
 pub const RELATIONSHIPS_TYPES_INDEX_FILE_NAME: &str = "relationships-index.db";
 pub const LABELS_FILE_NAME: &str = "labels.db";
+pub const KEY_PROPERTIES_INDEX_FILE_NAME: &str = "key-properties-index.db";
+pub const KEY_PROPERTIES_STORE_FILE_NAME: &str = "key-properties-store.db";
